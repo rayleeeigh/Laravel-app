@@ -8,6 +8,7 @@ use App\Http\Controllers\AccomodationsController;
 use App\Http\Controllers\AdventuresController;
 use App\Http\Controllers\HistoricsController;
 use App\Http\Controllers\FoodsController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,5 @@ Route::get('/services/accomodations', [AccomodationsController::class, 'show']);
 Route::get('/services/adventures', [AdventuresController::class, 'show']);
 Route::get('/services/foods', [FoodsController::class, 'show']);
 Route::get('/services/historics', [HistoricsController::class, 'show']);
+Route::get('/profile', [ProfileController::class, 'show']);
 

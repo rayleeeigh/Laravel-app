@@ -43,7 +43,7 @@
                     </li>
                     
                     <li class="mr-3">
-                        <span class="inline-block py-2 px-4 text-white no-underline">Welcome, {{ Auth::user()->name }}</span>
+                        <a class="inline-block py-2 px-4 text-white no-underline" href="/profile">Welcome, {{ Auth::user()->name }}</a>
                     </li>
 
                     <a href="{{ route('logout') }}"
