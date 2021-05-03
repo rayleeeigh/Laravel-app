@@ -37,47 +37,47 @@
 
 @foreach ($foods as $food)
 <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id{{ $food->foodID }}">
-  <div class="relative w-auto my-6 mx-auto max-w-3xl">
+  <div class="relative w-auto my-6 mx-auto max-w-2xl">
     <!--content-->
     <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
       <!--header-->
+      <form action="/services/foods" method="POST">
+        @csrf
       <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
         <h3 class="text-3xl font-semibold">
-          {{ $food->foodName }}
+          <input type="text" name="foodID" value="{{ Auth::user()->id }}" hidden>
+          {{ $food->foodName }} <input type="text" name="foodName" value="{{ $food->foodName }}" hidden>
         </h3>
-        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id{{ $food->foodID }}')">
-          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-            ×
-          </span>
-        </button>
       </div>
       <!--body-->
       <div class="relative p-6 flex-auto">
-        <img class="w-full h-96" src="{{ asset($food->foodImage) }}" alt="Mountain">
+        <img class="w-full h-96" src="{{ asset($food->foodImage) }}" alt="Mountain"> <input type="text" name="foodImage" value="{{ $food->foodImage }}" hidden>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          {{ $food->foodDesc }}
+          {{ $food->foodDesc }} <input type="text" name="foodDesc" value="{{ $food->foodDesc }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Location:</strong> {{ $food->foodCity }}
+          <strong>Location:</strong> {{ $food->foodCity }}<input type="text" name="foodCity" value="{{ $food->foodCity }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Contacts:</strong> {{ $food->foodContact }}
+          <strong>Contacts:</strong> {{ $food->foodContact }}<input type="text" name="foodContact" value="{{ $food->foodContact }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Email:</strong> {{ $food->foodEmail }}
+          <strong>Email:</strong> {{ $food->foodEmail }}<input type="text" name="foodEmail" value="{{ $food->foodEmail }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Website:</strong> {{ $food->foodSite }}
+          <strong>Website:</strong> {{ $food->foodSite }}<input type="text" name="foodSite" value="{{ $food->foodSite }}" hidden>
         </p>
+        <input type="text" name="foodPrice" value="{{ $food->foodPrice }}" hidden>
       </div>
       <!--footer-->
       <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
         <button class="text-gray-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id{{ $food->foodID }}')">
           Close
         </button>
-        <button class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg" type="button" onclick="toggleModal('modal-id{{ $food->foodID }}')">
+        <button type="submit" class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg">
           Add to Bucketlist
         </button>
+      </form>
       </div>
     </div>
   </div>

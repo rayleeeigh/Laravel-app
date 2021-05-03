@@ -19,35 +19,41 @@
                     @endif
                 @else
                     <li class="mr-3">
-                        <a class="{{ request()->is('/')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-black no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}" href="/">Home</a>
+                        <a class="{{ request()->is('/')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}" href="/">Home</a>
                     </li>
                     <li class="mr-3">
                         <div class="relative">
                             <input type="checkbox" id="sortbox" class="hidden absolute">
                             <label for="sortbox" class="flex items-center space-x-1 cursor-pointer">
-                                <span class="{{ request()->is('services/*')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-black no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Services</span>
+                                <span class="{{ request()->is('services/*')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Services</span>
                             </label>
                         
-                            <div id="sortboxmenu" class="absolute mt-1 right-1 top-full min-w-max shadow rounded opacity-0 bg-gray-800 bg-opacity-50 transition delay-75 ease-in-out z-10">
+                            <div id="sortboxmenu" class="absolute mt-1 right-1 top-full min-w-max shadow rounded opacity-0 bg-gray-800 transition delay-75 ease-in-out z-10">
                                 <ul class="block text-right text-gray-900">
-                                    <li><a href="/services/accomodations" class="{{ request()->is('services/accomodations')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-black no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Accomodations</a></li>
-                                    <li><a href="/services/adventures" class="{{ request()->is('services/adventures')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-black no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Adventures</a></li>
-                                    <li><a href="/services/foods" class="{{ request()->is('services/foods')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-black no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Food Tours</a></li>
-                                    <li><a href="/services/historics" class="{{ request()->is('services/historics')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-black no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Historical Tours</a></li>
+                                    <li><a href="/services/accomodations" class="{{ request()->is('services/accomodations')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Accomodations</a></li>
+                                    <li><a href="/services/adventures" class="{{ request()->is('services/adventures')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Adventures</a></li>
+                                    <li><a href="/services/foods" class="{{ request()->is('services/foods')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Food Tours</a></li>
+                                    <li><a href="/services/historics" class="{{ request()->is('services/historics')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}">Historical Tours</a></li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                     <li class="mr-3">
-                        <a class="{{ request()->is('map')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-black no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}" href="/map">Map of Cebu</a>
+                        <a class="{{ request()->is('map')?'inline-block py-2 px-4 text-white no-underline':'inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4' }}" href="/map">Map of Cebu</a>
                     </li>
                     
                     <li class="mr-3">
-                        <a class="inline-block py-2 px-4 text-white no-underline" href="/profile">Welcome, {{ Auth::user()->name }}</a>
+                        <a class="inline-block py-2 px-4 text-white no-underline" href="/profile/{{ Auth::user()->name }}">Welcome, {{ Auth::user()->name }}</a>
                     </li>
 
+                    @if (Auth::user()->accountType=='ADMIN')
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline" href="/admin">Admin Page</a>
+                    </li>
+                    @endif
+
                     <a href="{{ route('logout') }}"
-                       class="inline-block text-black no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                       class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
                        onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">

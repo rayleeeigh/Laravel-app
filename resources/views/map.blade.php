@@ -8,13 +8,6 @@
 
 <div id="map"></div>
 
-<!--Container-->
-{{-- <div class="bg-white h-screen">
-    <div class="container mx-auto pt-24 md:pt-16 px-6">
-            
-    </div>
-</div> --}}
-
 <script>
     
     mapboxgl.accessToken = 'pk.eyJ1IjoicmF5bHh5bGVtIiwiYSI6ImNrMHphdmZmNzBmdzQzb293M3Z5Zm9samYifQ.keAuGVm8Orve1iPn6o7wVQ';

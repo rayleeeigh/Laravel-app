@@ -35,4 +35,10 @@ class PageController extends Controller
             'title' =>'Historical Sites'
         ]);
     }
+
+    public function admin(){
+        return view('admin',[
+            'title' =>'Admin'
+        ]);
+    }
 }

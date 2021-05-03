@@ -9,6 +9,7 @@ use App\Http\Controllers\AdventuresController;
 use App\Http\Controllers\HistoricsController;
 use App\Http\Controllers\FoodsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,11 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/map', [PageController::class, 'map']);
-Route::get('/services/accomodations', [AccomodationsController::class, 'show']);
-Route::get('/services/adventures', [AdventuresController::class, 'show']);
-Route::get('/services/foods', [FoodsController::class, 'show']);
-Route::get('/services/historics', [HistoricsController::class, 'show']);
-Route::get('/profile', [ProfileController::class, 'show']);
+Route::resource('/services/accomodations', AccomodationsController::class);
+Route::resource('/services/adventures', AdventuresController::class);
+Route::resource('/services/foods', FoodsController::class);
+Route::resource('/services/historics', HistoricsController::class);
+Route::get('/profile/{name}', [ProfileController::class, 'index']);
+Route::resource('/profile', ProfileController::class);
+Route::resource('/admin', AdminController::class);
 

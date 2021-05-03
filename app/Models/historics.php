@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class historics extends Model
 {
     use HasFactory;
+
+    protected $table = 'historics';
+    protected $primaryKey = 'hisID';
 }

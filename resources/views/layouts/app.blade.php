@@ -72,12 +72,11 @@
         body { margin: 0; padding: 0; }
         #map { position: absolute; top: 0; bottom: 0; width: 100%;margin-top:9vh;}
         .navbar-custom{padding-top:1rem;padding-bottom:1rem;background-color:rgba(0,0,0,.8)}
-
         
     </style>
 
 </head>
-<body class="bg-gray-400 font-sans leading-normal tracking-normal">
+<body class="bg-white font-sans leading-normal tracking-normal">
     @yield('content')
 </body>
 </html>

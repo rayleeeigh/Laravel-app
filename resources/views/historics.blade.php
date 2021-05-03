@@ -34,92 +34,56 @@
     </div>
 </div>
 
-<button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button>
-  
-  <!--Modal-->
-  <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
-    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-    
-    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-      
-      <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
-        <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-          <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-        </svg>
-        <span class="text-sm">(Esc)</span>
+
+@foreach ($historics as $historic)
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id{{ $historic->hisID }}">
+  <div class="relative w-auto my-6 mx-auto max-w-2xl">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <form action="/services/historics" method="POST">
+        @csrf
+      <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          <input type="text" name="hisID" value="{{ Auth::user()->id }}" hidden>
+          {{ $historic->hisName }} <input type="text" name="hisName" value="{{ $historic->hisName }}" hidden>
+        </h3>
       </div>
-
-      <!-- Add margin if you want to see some of the overlay behind the modal-->
-      <div class="modal-content py-4 text-left px-6">
-        <!--Title-->
-        <div class="flex justify-between items-center pb-3">
-          <p class="text-2xl font-bold">Simple Modal!</p>
-          <div class="modal-close cursor-pointer z-50">
-            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-            </svg>
-          </div>
-        </div>
-
-        <!--Body-->
-        <p>Modal content can go here</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-
-        <!--Footer-->
-        <div class="flex justify-end pt-2">
-          <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
-          <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</button>
-        </div>
-        
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        <img class="w-full h-96" src="{{ asset($historic->hisImage) }}" alt="Mountain"> <input type="text" name="hisImage" value="{{ $historic->hisImage }}" hidden>
+        <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+          {{ $historic->hisDesc }} <input type="text" name="hisDesc" value="{{ $historic->hisDesc }}" hidden>
+        </p>
+        <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+          <strong>Location:</strong> {{ $historic->hisCity }}<input type="text" name="hisCity" value="{{ $historic->hisCity }}" hidden>
+        </p>
+        <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+          <strong>Contacts:</strong> {{ $historic->hisContact }}<input type="text" name="hisContact" value="{{ $historic->hisContact }}" hidden>
+        </p>
+        <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+          <strong>Email:</strong> {{ $historic->hisEmail }}<input type="text" name="hisEmail" value="{{ $historic->hisEmail }}" hidden>
+        </p>
+        <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+          <strong>Website:</strong> {{ $historic->hisSite }}<input type="text" name="hisSite" value="{{ $historic->hisSite }}" hidden>
+        </p>
+        <input type="text" name="hisPrice" value="{{ $historic->hisPrice }}" hidden>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+        <button class="text-gray-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id{{ $historic->hisID }}')">
+          Close
+        </button>
+        <button type="submit" class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg">
+          Add to Bucketlist
+        </button>
+      </form>
       </div>
     </div>
   </div>
-
-  <script>
-    var openmodal = document.querySelectorAll('.modal-open')
-    for (var i = 0; i < openmodal.length; i++) {
-      openmodal[i].addEventListener('click', function(event){
-    	event.preventDefault()
-    	toggleModal()
-      })
-    }
-    
-    const overlay = document.querySelector('.modal-overlay')
-    overlay.addEventListener('click', toggleModal)
-    
-    var closemodal = document.querySelectorAll('.modal-close')
-    for (var i = 0; i < closemodal.length; i++) {
-      closemodal[i].addEventListener('click', toggleModal)
-    }
-    
-    document.onkeydown = function(evt) {
-      evt = evt || window.event
-      var isEscape = false
-      if ("key" in evt) {
-    	isEscape = (evt.key === "Escape" || evt.key === "Esc")
-      } else {
-    	isEscape = (evt.keyCode === 27)
-      }
-      if (isEscape && document.body.classList.contains('modal-active')) {
-    	toggleModal()
-      }
-    };
-    
-    
-    function toggleModal () {
-      const body = document.querySelector('body')
-      const modal = document.querySelector('.modal')
-      modal.classList.toggle('opacity-0')
-      modal.classList.toggle('pointer-events-none')
-      body.classList.toggle('modal-active')
-    }
-    
-     
-  </script>
-
+</div>
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+@endforeach
 
 
 <footer>

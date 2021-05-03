@@ -41,43 +41,43 @@
     <!--content-->
     <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
       <!--header-->
+      <form action="/services/accomodations" method="POST">
+        @csrf
       <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
         <h3 class="text-3xl font-semibold">
-          {{ $accomodation->accName }}
+          <input type="text" name="accID" value="{{ Auth::user()->id }}" hidden>
+          {{ $accomodation->accName }} <input type="text" name="accName" value="{{ $accomodation->accName }}" hidden>
         </h3>
-        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id{{ $accomodation->accID }}')">
-          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-            ×
-          </span>
-        </button>
       </div>
       <!--body-->
       <div class="relative p-6 flex-auto">
-        <img class="w-full h-96" src="{{ asset($accomodation->accImage) }}" alt="Mountain">
+        <img class="w-full h-96" src="{{ asset($accomodation->accImage) }}" alt="Mountain"> <input type="text" name="accImage" value="{{ $accomodation->accImage }}" hidden>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          {{ $accomodation->accDesc }}
+          {{ $accomodation->accDesc }} <input type="text" name="accDesc" value="{{ $accomodation->accDesc }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Location:</strong> {{ $accomodation->accCity }}
+          <strong>Location:</strong> {{ $accomodation->accCity }}<input type="text" name="accCity" value="{{ $accomodation->accCity }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Contacts:</strong> {{ $accomodation->accContact }}
+          <strong>Contacts:</strong> {{ $accomodation->accContact }}<input type="text" name="accContact" value="{{ $accomodation->accContact }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Email:</strong> {{ $accomodation->accEmail }}
+          <strong>Email:</strong> {{ $accomodation->accEmail }}<input type="text" name="accEmail" value="{{ $accomodation->accEmail }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Website:</strong> {{ $accomodation->accSite }}
+          <strong>Website:</strong> {{ $accomodation->accSite }}<input type="text" name="accSite" value="{{ $accomodation->accSite }}" hidden>
         </p>
+        <input type="text" name="accPrice" value="{{ $accomodation->accPrice }}" hidden>
       </div>
       <!--footer-->
       <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
         <button class="text-gray-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id{{ $accomodation->accID }}')">
           Close
         </button>
-        <button class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg" type="button" onclick="toggleModal('modal-id{{ $accomodation->accID }}')">
+        <button type="submit" class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg">
           Add to Bucketlist
         </button>
+      </form>
       </div>
     </div>
   </div>

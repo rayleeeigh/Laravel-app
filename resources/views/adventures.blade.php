@@ -37,47 +37,47 @@
 
 @foreach ($adventures as $adventure)
 <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id{{ $adventure->advID }}">
-  <div class="relative w-auto my-6 mx-auto max-w-3xl">
+  <div class="relative w-auto my-6 mx-auto max-w-2xl">
     <!--content-->
     <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
       <!--header-->
+      <form action="/services/adventures" method="POST">
+        @csrf
       <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
         <h3 class="text-3xl font-semibold">
-          {{ $adventure->advName }}
+          <input type="text" name="advID" value="{{ Auth::user()->id }}" hidden>
+          {{ $adventure->advName }} <input type="text" name="advName" value="{{ $adventure->advName }}" hidden>
         </h3>
-        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id{{ $adventure->advID }}')">
-          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-            ×
-          </span>
-        </button>
       </div>
       <!--body-->
       <div class="relative p-6 flex-auto">
-        <img class="w-full h-96" src="{{ asset($adventure->advImage) }}" alt="Mountain">
+        <img class="w-full h-96" src="{{ asset($adventure->advImage) }}" alt="Mountain"> <input type="text" name="advImage" value="{{ $adventure->advImage }}" hidden>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          {{ $adventure->advDesc }}
+          {{ $adventure->advDesc }} <input type="text" name="advDesc" value="{{ $adventure->advDesc }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Location:</strong> {{ $adventure->advCity }}
+          <strong>Location:</strong> {{ $adventure->advCity }}<input type="text" name="advCity" value="{{ $adventure->advCity }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Contacts:</strong> {{ $adventure->advContact }}
+          <strong>Contacts:</strong> {{ $adventure->advContact }}<input type="text" name="advContact" value="{{ $adventure->advContact }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Email:</strong> {{ $adventure->advEmail }}
+          <strong>Email:</strong> {{ $adventure->advEmail }}<input type="text" name="advEmail" value="{{ $adventure->advEmail }}" hidden>
         </p>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-          <strong>Website:</strong> {{ $adventure->advSite }}
+          <strong>Website:</strong> {{ $adventure->advSite }}<input type="text" name="advSite" value="{{ $adventure->advSite }}" hidden>
         </p>
+        <input type="text" name="advPrice" value="{{ $adventure->advPrice }}" hidden>
       </div>
       <!--footer-->
       <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
         <button class="text-gray-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id{{ $adventure->advID }}')">
           Close
         </button>
-        <button class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg" type="button" onclick="toggleModal('modal-id{{ $adventure->advID }}')">
+        <button type="submit" class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg">
           Add to Bucketlist
         </button>
+      </form>
       </div>
     </div>
   </div>

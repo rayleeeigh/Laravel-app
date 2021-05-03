@@ -14,8 +14,15 @@ class CreateHistoricsTable extends Migration
     public function up()
     {
         Schema::create('historics', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('hisID');
+            $table->string('hisName');
+            $table->mediumText('hisDesc');
+            $table->string('hisImage');
+            $table->float('hisPrice');
+            $table->string('hisCity');
+            $table->string('hisContact');
+            $table->string('hisEmail');
+            $table->string('hisSite');
         });
     }
 

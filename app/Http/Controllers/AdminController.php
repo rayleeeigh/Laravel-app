@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\accomodations;
-use App\Models\bucketlist;
+use App\Models\adventures;
+use App\Models\foods;
+use App\Models\historics;
+use Illuminate\Support\Facades\Auth;
 
-class AccomodationsController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +18,24 @@ class AccomodationsController extends Controller
      */
     public function index()
     {
-        $accomodations = accomodations::all();
+        if (Auth::user()->accountType == 'REGULAR'){
+            return redirect('/');
+        }
 
-        return view('accomodations',[
-            'accomodations' => $accomodations,
-            'title' => 'Accomodations'
-        ]);
+        else{
+            $accomodations = accomodations::all();
+            $adventures = adventures::all();
+            $historics = historics::all();
+            $foods = foods::all();
+
+            return view('admin',[
+                'accomodations' => $accomodations,
+                'adventures' => $adventures,
+                'foods' => $foods,
+                'historics' => $historics,
+                'title' => 'Admin Page'
+            ]);
+        }
     }
 
     /**
@@ -41,19 +56,7 @@ class AccomodationsController extends Controller
      */
     public function store(Request $request)
     {
-        $accomodation = new bucketlist();
-        $accomodation->user_id = $request->input('accID');
-        $accomodation->bucketName = $request->input('accName');
-        $accomodation->bucketDesc = $request->input('accDesc');
-        $accomodation->bucketImage = $request->input('accImage');
-        $accomodation->bucketPrice = $request->input('accPrice');
-        $accomodation->bucketCity = $request->input('accCity');
-        $accomodation->bucketContact = $request->input('accContact');
-        $accomodation->bucketEmail = $request->input('accEmail');
-        $accomodation->bucketSite = $request->input('accSite');
-        $accomodation->save();
-
-        return redirect('/services/accomodations');
+        //
     }
 
     /**
@@ -98,6 +101,24 @@ class AccomodationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $accomodations= accomodations::where('accID',$id)->first();
+        $adventures= adventures::where('advID',$id)->first();
+        $historics= historics::where('hisID',$id)->first();
+        $foods= foods::where('foodID',$id)->first();
+        
+        if (!empty($accomodations)){
+            $accomodations->delete();
+        }
+        else if(!empty($adventures)){
+            $adventures->delete();
+        }
+        else if(!empty($historics)){
+            $adventures->delete();
+        }
+        else if(!empty($foods)){
+            $adventures->delete();
+        }
+
+        return redirect('/admin');
     }
 }

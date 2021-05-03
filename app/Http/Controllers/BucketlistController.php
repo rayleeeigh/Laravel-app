@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\accomodations;
-use App\Models\bucketlist;
 
-class AccomodationsController extends Controller
+class BucketlistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +13,7 @@ class AccomodationsController extends Controller
      */
     public function index()
     {
-        $accomodations = accomodations::all();
-
-        return view('accomodations',[
-            'accomodations' => $accomodations,
-            'title' => 'Accomodations'
-        ]);
+        //
     }
 
     /**
@@ -41,19 +34,7 @@ class AccomodationsController extends Controller
      */
     public function store(Request $request)
     {
-        $accomodation = new bucketlist();
-        $accomodation->user_id = $request->input('accID');
-        $accomodation->bucketName = $request->input('accName');
-        $accomodation->bucketDesc = $request->input('accDesc');
-        $accomodation->bucketImage = $request->input('accImage');
-        $accomodation->bucketPrice = $request->input('accPrice');
-        $accomodation->bucketCity = $request->input('accCity');
-        $accomodation->bucketContact = $request->input('accContact');
-        $accomodation->bucketEmail = $request->input('accEmail');
-        $accomodation->bucketSite = $request->input('accSite');
-        $accomodation->save();
-
-        return redirect('/services/accomodations');
+        //
     }
 
     /**

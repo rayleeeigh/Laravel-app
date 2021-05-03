@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class foods extends Model
+class bucketlist extends Model
 {
     use HasFactory;
 
-    protected $table = 'foods';
-    protected $primaryKey = 'foodID';
+    protected $table = 'bucketlist';
+    protected $primaryKey = 'bucketID';
 }
