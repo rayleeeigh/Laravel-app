@@ -42,15 +42,9 @@ class AccomodationsController extends Controller
     public function store(Request $request)
     {
         $accomodation = new bucketlist();
-        $accomodation->user_id = $request->input('accID');
-        $accomodation->bucketName = $request->input('accName');
-        $accomodation->bucketDesc = $request->input('accDesc');
-        $accomodation->bucketImage = $request->input('accImage');
-        $accomodation->bucketPrice = $request->input('accPrice');
-        $accomodation->bucketCity = $request->input('accCity');
-        $accomodation->bucketContact = $request->input('accContact');
-        $accomodation->bucketEmail = $request->input('accEmail');
-        $accomodation->bucketSite = $request->input('accSite');
+        $accomodation->user_id = $request->input('id');
+        $accomodation->category = 'Accomodation';
+        $accomodation->item = $request->input('accID');
         $accomodation->save();
 
         return redirect('/services/accomodations');

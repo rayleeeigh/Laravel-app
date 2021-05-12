@@ -11,4 +11,20 @@ class foods extends Model
 
     protected $table = 'foods';
     protected $primaryKey = 'foodID';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'foodname',
+        'foodDesc',
+        'foodImage',
+        'foodPrice',
+        'foodCity',
+        'foodContact',
+        'foodEmail',
+        'foodSite'
+    ];
 }

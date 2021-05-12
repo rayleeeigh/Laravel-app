@@ -23,6 +23,8 @@ class CreateFoodsTable extends Migration
             $table->string('foodContact');
             $table->string('foodEmail');
             $table->string('foodSite');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

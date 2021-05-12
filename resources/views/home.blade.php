@@ -20,8 +20,8 @@
         <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
         <div class="carousel-item absolute opacity-0" style="height:100vh;">
             <div class="absolute mt-40 ml-4">
-                <div class="container bg-black bg-opacity-50 py-40">
-                    <p class="text-center text-white w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis lectus in justo varius feugiat. Aliquam vel erat enim. Cras vehicula sollicitudin leo sed semper. In hac habitasse platea dictumst. Mauris et hendrerit lectus. Fusce sed hendrerit lacus. Nam non congue arcu. Sed fringilla tempor vehicula. </p>
+                <div class="container bg-black bg-opacity-50 py-40 ml-8">
+                    <p class="text-center text-5xl text-white w-full"><strong>Wanna know how Cebu became what it is right now?</strong></p>
                 </div>
             </div>
             <img class="block h-full w-full" src="{{ asset('storage/historic.jpg') }}">
@@ -33,8 +33,8 @@
         <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item absolute opacity-0" style="height:100vh;">
             <div class="absolute mt-40 ml-4">
-                <div class="container bg-black bg-opacity-50 py-40">
-                    <p class="text-center text-white w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis lectus in justo varius feugiat. Aliquam vel erat enim. Cras vehicula sollicitudin leo sed semper. In hac habitasse platea dictumst. Mauris et hendrerit lectus. Fusce sed hendrerit lacus. Nam non congue arcu. Sed fringilla tempor vehicula. </p>
+                <div class="container bg-black bg-opacity-50 py-40 ml-20">
+                    <p class="text-center text-5xl text-white w-full"><strong>Enjoy the vibes and fresh sea breeze in Cebu?</strong></p>
                 </div>
             </div>
             <img class="block h-full w-full" src="{{ asset('storage/water.jpg') }}">
@@ -47,7 +47,7 @@
         <div class="carousel-item absolute opacity-0" style="height:100vh;">
             <div class="absolute mt-40 ml-4">
                 <div class="container bg-black bg-opacity-50 py-40">
-                    <p class="text-center text-white w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis lectus in justo varius feugiat. Aliquam vel erat enim. Cras vehicula sollicitudin leo sed semper. In hac habitasse platea dictumst. Mauris et hendrerit lectus. Fusce sed hendrerit lacus. Nam non congue arcu. Sed fringilla tempor vehicula. </p>
+                    <p class="text-center text-5xl text-white w-full"><strong>Be amused and feel mesmerized by watching the citylights of busy infrastructures in Cebu!</strong></p>
                 </div>
             </div>
             <img class="block h-full w-full" src="{{ asset('storage/citylights.jpg') }}">
@@ -60,7 +60,7 @@
         <div class="carousel-item absolute opacity-0" style="height:100vh;">
             <div class="absolute mt-40 ml-4">
                 <div class="container bg-black bg-opacity-50 py-40">
-                    <p class="text-center text-white w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis lectus in justo varius feugiat. Aliquam vel erat enim. Cras vehicula sollicitudin leo sed semper. In hac habitasse platea dictumst. Mauris et hendrerit lectus. Fusce sed hendrerit lacus. Nam non congue arcu. Sed fringilla tempor vehicula. </p>
+                    <p class="text-center text-5xl text-white w-full"><strong>Thinking of good souvenirs and gifts for your loved ones?</strong></p>
                 </div>
             </div>
             <img class="block h-full w-full" src="{{ asset('storage/pasalubong.jpg') }}">
@@ -72,8 +72,9 @@
         <input class="carousel-open" type="radio" id="carousel-5" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item absolute opacity-0" style="height:100vh;">
             <div class="absolute mt-40 ml-4">
-                <div class="container bg-black bg-opacity-50 py-40">
-                    <p class="text-center text-white w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis lectus in justo varius feugiat. Aliquam vel erat enim. Cras vehicula sollicitudin leo sed semper. In hac habitasse platea dictumst. Mauris et hendrerit lectus. Fusce sed hendrerit lacus. Nam non congue arcu. Sed fringilla tempor vehicula. </p>
+                <div class="container bg-black bg-opacity-50 py-40 ml-4">
+                    <p class="text-center text-4xl text-white w-full"><strong>Suroy-suroy Sugbo is the best website you could ever look for.</strong></p>
+                    <p class="text-center text-2xl text-white w-full">With lots of services and information for us to ensure that tourists wouldn't leave Cebu with a bad experience</p>
                 </div>
             </div>
             <img class="block h-full w-full" src="{{ asset('storage/logo1.png') }}">
@@ -111,7 +112,7 @@
                 <h1 class="text-5xl text-black">
                     <strong>Mangaon ta bai!</strong>
                 </h1>
-                <p class="w-96">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis lectus in justo varius feugiat. Aliquam vel erat enim. Cras vehicula sollicitudin leo sed semper. In hac habitasse platea dictumst. Mauris et hendrerit lectus. Fusce sed hendrerit lacus. Nam non congue arcu. Sed fringilla tempor vehicula.</p>
+                <p class="w-96">While the other pieces in my “Origins of Foods We Love” series feature specific dishes, this one will spotlight an entire country’s food. That’s because the influences on Filipino food as we know it today spans both time and place.The Philippines comprises more than 7,107 islands tucked between the South China Sea and the Philippine Sea; its location placed the Philippines within the path of migration and trade for thousands and thousands of years. And with migrating humans come new ingredients, dishes, and traditions.</p>
             </div>
 
             <div class="inline-block float-right mr-32">
@@ -128,7 +129,7 @@
                 <h1 class="text-5xl text-black">
                     <strong>Manlaag ta bai!</strong>
                 </h1>
-                <p class="w-96">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis lectus in justo varius feugiat. Aliquam vel erat enim. Cras vehicula sollicitudin leo sed semper. In hac habitasse platea dictumst. Mauris et hendrerit lectus. Fusce sed hendrerit lacus. Nam non congue arcu. Sed fringilla tempor vehicula.</p>
+                <p class="w-96">Where to go in an archipelagic country of over 7,600 islands? Here are my top picks for travelers who want to discover beautiful destinations in the Philippines. Let’s start off with the top destinations that are both exceptionally beautiful and easy to reach, perfect for first-time visitors. Next, I’m going to share some spots that truly stand out from the other destinations in the country.</p>
             </div>
         </div>
 
@@ -137,7 +138,7 @@
                 <h1 class="text-5xl text-black">
                     <strong>Mopahuway ta bai!</strong>
                 </h1>
-                <p class="w-96">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis lectus in justo varius feugiat. Aliquam vel erat enim. Cras vehicula sollicitudin leo sed semper. In hac habitasse platea dictumst. Mauris et hendrerit lectus. Fusce sed hendrerit lacus. Nam non congue arcu. Sed fringilla tempor vehicula.</p>
+                <p class="w-96">When it comes to hanging out, everyone has their own go-to places – cafes, board game cafes, bars, and pubs. Whether you’re looking for a change in environment or just a place to add to your list of hangout places, these restaurants are perfect for you and your friends to spend some time catching up during your free time this holiday season!</p>
             </div>
 
             <div class="inline-block float-right mr-32">

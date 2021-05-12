@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\accomodations;
+use App\Models\adventures;
+use App\Models\historics;
+use App\Models\foods;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\bucketlist;
@@ -17,12 +21,37 @@ class ProfileController extends Controller
     public function index($name)
     {
         $user = User::where('name','=',$name)->first();
-        $bucketlist = bucketlist::where('user_id','=',$user->id)
-        ->get();
+
+        $resacc = bucketlist::where('user_id','=',$user->id)->where('category','=','Accomodation')->get('item');
+        $bucketuseracc = bucketlist::where('user_id','=',$user->id)->where('category','=','Accomodation')->get();
+        $arrayacc= $resacc->toArray();
+        $bucketacc = accomodations::whereIn('accID',$arrayacc)->get();
+
+        $resadv = bucketlist::where('user_id','=',$user->id)->where('category','=','Adventure')->get('item');
+        $bucketuseradv = bucketlist::where('user_id','=',$user->id)->where('category','=','Adventure')->get();
+        $arrayadv= $resadv->toArray();
+        $bucketadv = adventures::whereIn('advID',$arrayadv)->get();
+
+        $reshis = bucketlist::where('user_id','=',$user->id)->where('category','=','Historic')->get('item');
+        $bucketuserhis = bucketlist::where('user_id','=',$user->id)->where('category','=','Historic')->get();
+        $arrayhis= $reshis->toArray();
+        $buckethis = historics::whereIn('hisID',$arrayhis)->get();
+
+        $resfood = bucketlist::where('user_id','=',$user->id)->where('category','=','Foods')->get('item');
+        $bucketuserfood = bucketlist::where('user_id','=',$user->id)->where('category','=','Foods')->get();
+        $arrayfood= $resfood->toArray();
+        $bucketfood = foods::whereIn('foodID',$arrayfood)->get();
 
         return view('profile',[
             'title' => $user->name,
-            'bucketlist' => $bucketlist
+            'bucketacc' => $bucketacc,
+            'bucketadv' => $bucketadv,
+            'buckethis' => $buckethis,
+            'bucketfood' => $bucketfood,
+            'bucketuseracc' => $bucketuseracc,
+            'bucketuseradv' => $bucketuseradv,
+            'bucketuserhis' => $bucketuserhis,
+            'bucketuserfood' => $bucketuserfood
         ]);
     }
 
@@ -78,13 +107,17 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $imageName = $request->input('fullname').'.'.$request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(public_path('storage/Profile'),$imageName);
+
         $user = User::where('id',$id)
             ->update([
                 'name' => $request->input('name'),
                 'fullname' => $request->input('fullname'),
                 'email' => $request->input('email'),
                 'biography' => $request->input('biography'),
-                'password' => Hash::make($request->input('password'))
+                'password' => Hash::make($request->input('password')),
+                'image' => $imageName
             ]);
         $name = User::find($id)->first();
         

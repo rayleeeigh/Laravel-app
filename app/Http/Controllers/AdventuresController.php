@@ -42,15 +42,9 @@ class AdventuresController extends Controller
     public function store(Request $request)
     {
         $adventure = new bucketlist();
-        $adventure->user_id = $request->input('advID');
-        $adventure->bucketName = $request->input('advName');
-        $adventure->bucketDesc = $request->input('advDesc');
-        $adventure->bucketImage = $request->input('advImage');
-        $adventure->bucketPrice = $request->input('advPrice');
-        $adventure->bucketCity = $request->input('advCity');
-        $adventure->bucketContact = $request->input('advContact');
-        $adventure->bucketEmail = $request->input('advEmail');
-        $adventure->bucketSite = $request->input('advSite');
+        $adventure->user_id = $request->input('id');
+        $adventure->category = 'Adventure';
+        $adventure->item = $request->input('advID');
         $adventure->save();
 
         return redirect('/services/adventures');

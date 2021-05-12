@@ -23,6 +23,8 @@ class CreateAdventuresTable extends Migration
             $table->string('advContact');
             $table->string('advEmail');
             $table->string('advSite');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

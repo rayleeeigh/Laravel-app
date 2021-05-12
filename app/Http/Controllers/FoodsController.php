@@ -42,15 +42,9 @@ class FoodsController extends Controller
     public function store(Request $request)
     {
         $food = new bucketlist();
-        $food->user_id = $request->input('foodID');
-        $food->bucketName = $request->input('foodName');
-        $food->bucketDesc = $request->input('foodDesc');
-        $food->bucketImage = $request->input('foodImage');
-        $food->bucketPrice = $request->input('foodPrice');
-        $food->bucketCity = $request->input('foodCity');
-        $food->bucketContact = $request->input('foodContact');
-        $food->bucketEmail = $request->input('foodEmail');
-        $food->bucketSite = $request->input('foodSite');
+        $food->user_id = $request->input('id');
+        $food->category = 'Foods';
+        $food->item = $request->input('foodID');
         $food->save();
 
         return redirect('/services/foods');

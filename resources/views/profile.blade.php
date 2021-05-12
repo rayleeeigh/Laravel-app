@@ -10,7 +10,7 @@
     <div class="top h-72 w-full bg-blue-600 overflow-hidden relative" >
       <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="" class="bg w-full h-full object-cover object-center absolute z-0">
       <div class="flex flex-col justify-center items-center relative h-full bg-black bg-opacity-50 text-white">
-        <img src="{{ asset(Auth::user()->image) }}" class="mt-4 h-24 w-24 object-cover rounded-full">
+        <img src="{{ asset('storage/Profile/'.Auth::user()->image) }}" class="mt-4 h-24 w-24 object-cover rounded-full">
         <h1 class="text-2xl font-semibold">{{ Auth::user()->name }}</h1>
         <h4 class="text-sm font-semibold">Joined Since {{ Carbon\Carbon::parse(Auth::user()->created_at)->year }}</h4>
       </div>
@@ -79,17 +79,59 @@
 
       <div class="col-span-12 md:border-solid md:border-l md:border-black md:border-opacity-25 h-full pb-12 md:col-span-10" id="buckettab" style="display:none">
       
-      <div class="p-20 ml-14">
-      @foreach ($bucketlist as $bucket)
-                    <div class="relative inline-block w-1/3 rounded overflow-hidden shadow-lg" style="height:30rem">
-                        <img class="w-full h-52" src="{{ asset($bucket->bucketImage) }}" alt="Mountain">
+        <h1 class="text-4xl text-black flex justify-center">
+            <strong>Accomodations</strong>
+        </h1>
+        
+        <div class="p-20 ml-6">
+        @foreach ($bucketacc as $bucket)
+                      <div class="relative inline-block w-72 rounded overflow-hidden shadow-lg" style="height:30rem">
+                          <img class="w-full h-52" src="{{ asset('storage/Accomodation/'.$bucket->accImage) }}" alt="Mountain">
+                          <div class="px-6 py-4">
+                              <div class="font-bold text-xl mb-2">{{ $bucket->bucketName }}</div>
+                              <p class="text-gray-700 text-base">
+                                  <strong>Contact: </strong>{{ $bucket->accContact }}<br>
+                                  <strong>Email: </strong>{{ $bucket->accEmail }}<br>
+                                  <strong>Website: </strong>{{ $bucket->accWebsite }}
+                              </p>
+                          </div>
+                          @foreach ($bucketuseracc as $buser)
+                            @if ($buser->item === $bucket->accID)
+                            <form action="/profile/{{ $buser->bucketID }}" method="POST">
+                            @endif
+                          @endforeach
+                          @csrf
+                          @method('delete')
+                          <div class="absolute bottom-0 container pb-8 flex justify-center">
+                              <button type="submit" class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg">Delete</button>
+                          </div>
+                          </form>
+                      </div>
+        @endforeach
+        
+        </div>
+
+        <h1 class="text-4xl text-black flex justify-center">
+          <strong>Adventures</strong>
+      </h1>
+      
+      <div class="p-20 ml-6">
+      @foreach ($bucketadv as $bucket)
+                    <div class="relative inline-block w-72 rounded overflow-hidden shadow-lg" style="height:30rem">
+                        <img class="w-full h-52" src="{{ asset('storage/Adventure/'.$bucket->advImage) }}" alt="Mountain">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{ $bucket->bucketName }}</div>
                             <p class="text-gray-700 text-base">
-                                <strong>Contact: </strong>{{ $bucket->bucketContact }}
+                              <strong>Contact: </strong>{{ $bucket->advContact }}<br>
+                              <strong>Email: </strong>{{ $bucket->advEmail }}<br>
+                              <strong>Website: </strong>{{ $bucket->advWebsite }}
                             </p>
                         </div>
-                        <form action="/profile/{{ $bucket->bucketID }}" method="POST">
+                        @foreach ($bucketuseradv as $buser)
+                          @if ($buser->item === $bucket->accID)
+                          <form action="/profile/{{ $buser->bucketID }}" method="POST">
+                          @endif
+                        @endforeach
                         @csrf
                         @method('delete')
                         <div class="absolute bottom-0 container pb-8 flex justify-center">
@@ -100,6 +142,71 @@
       @endforeach
       
       </div>
+
+      <h1 class="text-4xl text-black flex justify-center">
+        <strong>Food Trips</strong>
+    </h1>
+    
+    <div class="p-20 ml-6">
+    @foreach ($bucketfood as $bucket)
+                  <div class="relative inline-block w-72 rounded overflow-hidden shadow-lg" style="height:30rem">
+                      <img class="w-full h-52" src="{{ asset('storage/Foods/'.$bucket->foodImage) }}" alt="Mountain">
+                      <div class="px-6 py-4">
+                          <div class="font-bold text-xl mb-2">{{ $bucket->bucketName }}</div>
+                          <p class="text-gray-700 text-base">
+                            <strong>Contact: </strong>{{ $bucket->foodContact }}<br>
+                            <strong>Email: </strong>{{ $bucket->foodEmail }}<br>
+                            <strong>Website: </strong>{{ $bucket->foodWebsite }}
+                          </p>
+                      </div>
+                      @foreach ($bucketuserfood as $buser)
+                        @if ($buser->item === $bucket->accID)
+                        <form action="/profile/{{ $buser->bucketID }}" method="POST">
+                        @endif
+                      @endforeach
+                      @csrf
+                      @method('delete')
+                      <div class="absolute bottom-0 container pb-8 flex justify-center">
+                          <button type="submit" class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg">Delete</button>
+                      </div>
+                      </form>
+                  </div>
+    @endforeach
+    
+    </div>
+
+    <h1 class="text-4xl text-black flex justify-center">
+      <strong>Historical Sites</strong>
+  </h1>
+  
+  <div class="p-20 ml-6">
+  @foreach ($buckethis as $bucket)
+                <div class="relative inline-block w-72 rounded overflow-hidden shadow-lg" style="height:30rem">
+                    <img class="w-full h-52" src="{{ asset('storage/Historic/'.$bucket->hisImage) }}" alt="Mountain">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2">{{ $bucket->bucketName }}</div>
+                        <p class="text-gray-700 text-base">
+                          <strong>Contact: </strong>{{ $bucket->hisContact }}<br>
+                          <strong>Email: </strong>{{ $bucket->hisEmail }}<br>
+                          <strong>Website: </strong>{{ $bucket->hisWebsite }}
+                        </p>
+                    </div>
+                    @foreach ($bucketuserhis as $buser)
+                      @if ($buser->item === $bucket->accID)
+                      <form action="/profile/{{ $buser->bucketID }}" method="POST">
+                      @endif
+                    @endforeach
+                    @csrf
+                    @method('delete')
+                    <div class="absolute bottom-0 container pb-8 flex justify-center">
+                        <button type="submit" class="text-white text-sm py-2.5 px-5 rounded-md bg-gray-700 hover:bg-gray-900 hover:shadow-lg">Delete</button>
+                    </div>
+                    </form>
+                </div>
+  @endforeach
+  
+  </div>
+
       </div>
   
   

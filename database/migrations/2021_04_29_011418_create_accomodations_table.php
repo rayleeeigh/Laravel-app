@@ -23,6 +23,8 @@ class CreateAccomodationsTable extends Migration
             $table->string('accContact');
             $table->string('accEmail');
             $table->string('accSite');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

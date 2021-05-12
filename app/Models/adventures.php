@@ -12,4 +12,20 @@ class adventures extends Model
     protected $table = 'adventures';
     protected $primaryKey = 'advID';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'advname',
+        'advDesc',
+        'advImage',
+        'advPrice',
+        'advCity',
+        'advContact',
+        'advEmail',
+        'advSite'
+    ];
+
 }

@@ -8,6 +8,14 @@
 
 
 <div style="height:100vh;">
+  <div class="absolute mt-16 ml-4">
+    <div class="container bg-black bg-opacity-50 py-48">
+      <h1 class="text-5xl text-white">
+        <strong>Accomodations</strong>
+      </h1>
+        <p class="text-white w-1/2">While most travellers arrive via the airport on neighbouring Mactan – where five-star spa resorts have exclusive beaches and dive sites teeming with life – many then head for neighbouring Cebu, home to Cebu City, an economic hub peppered with grand colonial architecture, or Moalboal on the island’s west side, which delivers high-adrenaline canyoneering and deep-diving thrills, and Zaragosa with its postcard-perfect beaches. Here’s our pick of the best hotels on this vibrant island in the Philippines.</p>
+    </div>
+</div>
     <img class="block h-full w-full" src="{{ asset('storage/Accomodation/intro.jpg') }}">
 </div>
 
@@ -18,7 +26,7 @@
             <div class="p-20 ml-14">
                 @foreach ($accomodations as $accomodation)
                     <div class="relative inline-block max-w-xs rounded overflow-hidden shadow-lg" style="height:40rem">
-                        <img class="w-full h-64" src="{{ asset($accomodation->accImage) }}" alt="Mountain">
+                        <img class="w-full h-64" src="{{ asset('storage/Accomodation/'.$accomodation->accImage) }}" alt="Mountain">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{ $accomodation->accName }}</div>
                             <p class="text-gray-700 text-base">
@@ -45,13 +53,14 @@
         @csrf
       <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
         <h3 class="text-3xl font-semibold">
-          <input type="text" name="accID" value="{{ Auth::user()->id }}" hidden>
+          <input type="text" name="id" value="{{ Auth::user()->id }}" hidden>
+          <input type="text" name="accID" value="{{ $accomodation->accID }}" hidden>
           {{ $accomodation->accName }} <input type="text" name="accName" value="{{ $accomodation->accName }}" hidden>
         </h3>
       </div>
       <!--body-->
       <div class="relative p-6 flex-auto">
-        <img class="w-full h-96" src="{{ asset($accomodation->accImage) }}" alt="Mountain"> <input type="text" name="accImage" value="{{ $accomodation->accImage }}" hidden>
+        <img class="w-full h-96" src="{{ asset('storage/Accomodation/'.$accomodation->accImage) }}" alt="Mountain"> <input type="text" name="accImage" value="{{ $accomodation->accImage }}" hidden>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
           {{ $accomodation->accDesc }} <input type="text" name="accDesc" value="{{ $accomodation->accDesc }}" hidden>
         </p>

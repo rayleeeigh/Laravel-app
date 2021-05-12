@@ -8,6 +8,14 @@
 
 
 <div style="height:100vh;">
+  <div class="absolute mt-16 ml-4">
+    <div class="container bg-black bg-opacity-50 py-44">
+      <h1 class="text-5xl text-white">
+        <strong>Foods</strong>
+      </h1>
+        <p class="text-white w-1/2">Cebu is one of the most popular destinations in the Philippines. Because it has an international airport, many people touchdown in Cebu from overseas and this is their first destination for their Philippines adventure. There are so many things to do on Cebu that unfortunately, most tourists do one or two and then head to another island. This is a big mistake as you can have an adventure-packed week or more on Cebu alone! These are all of the places I have personally visited in Cebu so far and you can click the links throughout the article to visit the individual blog posts about each location.</p>
+    </div>
+</div>
     <img class="block h-full w-full" src="{{ asset('storage/Foods/intro.jpg') }}">
 </div>
 
@@ -18,7 +26,7 @@
             <div class="p-20 ml-14">
                 @foreach ($foods as $food)
                     <div class="relative inline-block max-w-xs rounded overflow-hidden shadow-lg" style="height:40rem">
-                        <img class="w-full h-64" src="{{ asset($food->foodImage) }}" alt="Mountain">
+                        <img class="w-full h-64" src="{{ asset('storage/Foods/'.$food->foodImage) }}" alt="Mountain">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{ $food->foodName }}</div>
                             <p class="text-gray-700 text-base">
@@ -45,13 +53,14 @@
         @csrf
       <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
         <h3 class="text-3xl font-semibold">
-          <input type="text" name="foodID" value="{{ Auth::user()->id }}" hidden>
+          <input type="text" name="id" value="{{ Auth::user()->id }}" hidden>
+          <input type="text" name="foodID" value="{{ $food->foodID }}" hidden>
           {{ $food->foodName }} <input type="text" name="foodName" value="{{ $food->foodName }}" hidden>
         </h3>
       </div>
       <!--body-->
       <div class="relative p-6 flex-auto">
-        <img class="w-full h-96" src="{{ asset($food->foodImage) }}" alt="Mountain"> <input type="text" name="foodImage" value="{{ $food->foodImage }}" hidden>
+        <img class="w-full h-96" src="{{ asset('storage/Foods/'.$food->foodImage) }}" alt="Mountain"> <input type="text" name="foodImage" value="{{ $food->foodImage }}" hidden>
         <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
           {{ $food->foodDesc }} <input type="text" name="foodDesc" value="{{ $food->foodDesc }}" hidden>
         </p>

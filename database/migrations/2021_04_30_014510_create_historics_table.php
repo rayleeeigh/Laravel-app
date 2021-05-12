@@ -23,6 +23,8 @@ class CreateHistoricsTable extends Migration
             $table->string('hisContact');
             $table->string('hisEmail');
             $table->string('hisSite');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

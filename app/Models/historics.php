@@ -11,4 +11,20 @@ class historics extends Model
 
     protected $table = 'historics';
     protected $primaryKey = 'hisID';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'hisname',
+        'hisDesc',
+        'hisImage',
+        'hisPrice',
+        'hisCity',
+        'hisContact',
+        'hisEmail',
+        'hisSite'
+    ];
 }

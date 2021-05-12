@@ -42,15 +42,9 @@ class HistoricsController extends Controller
     public function store(Request $request)
     {
         $historic = new bucketlist();
-        $historic->user_id = $request->input('hisID');
-        $historic->bucketName = $request->input('hisName');
-        $historic->bucketDesc = $request->input('hisDesc');
-        $historic->bucketImage = $request->input('hisImage');
-        $historic->bucketPrice = $request->input('hisPrice');
-        $historic->bucketCity = $request->input('hisCity');
-        $historic->bucketContact = $request->input('hisContact');
-        $historic->bucketEmail = $request->input('hisEmail');
-        $historic->bucketSite = $request->input('hisSite');
+        $historic->user_id = $request->input('id');
+        $historic->category = 'Historic';
+        $historic->item = $request->input('hisID');
         $historic->save();
 
         return redirect('/services/historics');
